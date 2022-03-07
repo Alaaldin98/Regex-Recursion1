@@ -1,14 +1,13 @@
 /* Write a function to do the division operation without using the built-in division*/
 
 function division(number, dividedBy){
-    // Write you logic here.
-if(number==0||dividedBy==0){
-        return 0;
-      }else{
-       
-       return 1 + division(number-dividedBy,dividedBy);
-      }
-}
+    if (number>=dividedBy && number>0 && dividedBy >0) {
+        return 1+ division(number-dividedBy,dividedBy);    
+        } 
+        else {
+            return 0;
+        }   
+     }
 
 /* Write a function that implement Math.pow(x,n) but using recursion
 Example:
@@ -16,15 +15,18 @@ pow(2,4) = 16
 */
 
 
-function pow(x,n){
-// Write you logic here.
-    if (n != 0){
-        return (x*pow(x, n-1));
-    }
-    else{
-        return 1;
-    }  
-return
+function pow(x, y){
+if (y>1) {
+    return x * pow(x,y-1);
+}
+else if (y==0)
+{
+    return 1;
+}
+else
+{
+    return x;
+}
 }
 
 /* The Fibonacci Series is a numeric series starting with the integers 0 and 1. In this series,
@@ -37,12 +39,15 @@ Write a function that take n as parameter and return the nth element in the Fibo
 Example: n = 4 ==> 3, n= 0 ==> 0, n = 3 ==> 2 */
 
 function fibonacci(n){
-    // Write you logic here.
-if( n==1 || n===0 ){
-        return n;}
-    else{
-    return fibonacci(n-1) + fibonacci(n-2);
-    }
+if (n<2) {
+    return n;
+
+}else{
+
+    return fibonacci(n-1)+fibonacci(n-2);
+}
+
+    
 }
 
 /* Optional 
@@ -97,9 +102,3 @@ describe("Test fibonacci", () => {
     })
 });
 
-describe("Test permutations", () => {
-    test("It should return a list of possible combinations", () => {
-        expect(permutations(3,3)).toStrictEqual(["123", "132", "213", "231", "312", "321"]);
-        expect(permutations(3,0)).toStrictEqual([]);
-    })
-});
